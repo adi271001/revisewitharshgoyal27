@@ -1,0 +1,6 @@
+#use original list as stack
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        validop = {"+" : add, "-" : sub, "*" : mul, "/" : truediv}
+        for a in tokens[:] : tokens.append(int(validop[a](tokens.pop(-2),tokens.pop(-1)) if a in validop else a))
+        return tokens[-1]
